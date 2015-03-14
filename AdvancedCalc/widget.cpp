@@ -2,7 +2,7 @@
 #include "ui_widget.h"
 
 Widget::Widget(QWidget *parent) :
-    QWidget(parent), firstNumber(0), secondNumber(0), operationsSequense(false), operation('+'),
+    QWidget(parent), firstNumber(0), secondNumber(0), operation('+'), operationsSequense(false),
     ui(new Ui::Widget)
 {
     ui->setupUi(this);
@@ -64,24 +64,23 @@ void Widget::displayResult()
         return;
     }
 
-    Calculator calc;
-    double result = calc.count(firstNumber, operation, secondNumber);
+    double result = Calculator::count(firstNumber, operation, secondNumber);
     ui->lineEdit->setText(QString::number(result));
     operationsSequense = false;
 }
 
-void Widget::changeEditLine(QString symbol)
+void Widget::changeEditLine(QString newSymbol)
 {
     QString current = ui->lineEdit->text();
 
-    if (symbol == "." && ((int)current.toDouble() != current.toDouble()
+    if (newSymbol == "." && (static_cast<int>(current.toDouble()) != (current.toDouble())
             || current[current.length() - 1] == '.' ))
     {
         showError("Exsess point!");
         return;
     }
 
-    current += symbol;
+    current += newSymbol;
     ui->lineEdit->setText(current);
 }
 
@@ -90,8 +89,7 @@ void Widget::rememberOperand(QString operation)
     if (operationsSequense)
     {
         secondNumber = ui->lineEdit->text().toDouble();
-        Calculator *calc;
-        firstNumber = calc->count(firstNumber, this->operation, secondNumber);
+        firstNumber = Calculator::count(firstNumber, this->operation, secondNumber);
     }
     else
         firstNumber = ui->lineEdit->text().toDouble();
@@ -101,9 +99,11 @@ void Widget::rememberOperand(QString operation)
     operationsSequense = true;
 }
 
-void Widget::showError(QString error)
+void Widget::showError(const QString &error)
 {
     QMessageBox *errorBox = new QMessageBox;
     errorBox->setText(error);
     errorBox->show();
+    if (!errorBox->isVisible())
+        delete errorBox;
 }

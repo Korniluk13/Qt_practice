@@ -1,9 +1,10 @@
-#ifndef WIDGET_H
-#define WIDGET_H
+#pragma once
 
 #include <QWidget>
 #include <QSignalMapper>
 #include <QMessageBox>
+#include <iostream>
+using namespace std;
 #include "calculator.h"
 
 namespace Ui {
@@ -17,22 +18,15 @@ class Widget : public QWidget
     public:
         explicit Widget(QWidget *parent = 0);
         ~Widget();
-
     private slots:
-    /**
-         * @brief displayResult display result in lineEdit after pressing button equal
-         */
+        ///displayResult display result in lineEdit after pressing button equal
         void displayResult();
-        /**
-         * @brief changeEditLine - changing edit line after inputing new figure
-         * @param symbol - new figure or point
-         */
-        void changeEditLine(QString symbol);
-        /**
-         * @brief rememberOperand - initialization firstNumber and operation
-         */
-        void rememberOperand(QString operation);
 
+        ///changeEditLine - changing edit line after inputing new figure
+        void changeEditLine(QString newSymbol);
+
+        ///initialization firstNumber and operation
+        void rememberOperand(QString operation);
     private:
         Ui::Widget *ui;
 
@@ -42,10 +36,8 @@ class Widget : public QWidget
         double firstNumber;
         double secondNumber;
         QChar operation;
-
         bool operationsSequense;
 
-        void showError(QString error);
+        ///Show message box with text of the error
+        void showError(const QString &error);
 };
-
-#endif // WIDGET_H
