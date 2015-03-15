@@ -3,8 +3,6 @@
 #include <QWidget>
 #include <QSignalMapper>
 #include <QMessageBox>
-#include <iostream>
-using namespace std;
 #include "calculator.h"
 
 namespace Ui {
@@ -15,29 +13,31 @@ class Widget : public QWidget
 {
     Q_OBJECT
 
-    public:
-        explicit Widget(QWidget *parent = 0);
-        ~Widget();
-    private slots:
-        ///displayResult display result in lineEdit after pressing button equal
-        void displayResult();
+public:
+    explicit Widget(QWidget *parent = 0);
+    ~Widget();
 
-        ///changeEditLine - changing edit line after inputing new figure
-        void changeEditLine(QString newSymbol);
+private slots:
+    ///displayResult display result in lineEdit after pressing button equal
+    void displayResult();
 
-        ///initialization firstNumber and operation
-        void rememberOperand(QString operation);
-    private:
-        Ui::Widget *ui;
+    ///changeEditLine - changing edit line after inputing new figure
+    void changeEditLine(QString newSymbol);
 
-        QSignalMapper *figureSignalMapper;
-        QSignalMapper *operationSignalMapper;
+    ///initialization firstNumber and operation
+    void rememberOperand(QString operation);
 
-        double firstNumber;
-        double secondNumber;
-        QChar operation;
-        bool operationsSequense;
+private:
+    Ui::Widget *ui;
 
-        ///Show message box with text of the error
-        void showError(const QString &error);
+    QSignalMapper *figureSignalMapper;
+    QSignalMapper *operationSignalMapper;
+
+    double firstNumber;
+    double secondNumber;
+    QChar operation;
+    bool operationsSequense;
+
+    ///Show message box with text of the error
+    void showError(const QString &error);
 };

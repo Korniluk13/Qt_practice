@@ -5,10 +5,10 @@
 ///The Calculator class counts expressions
 class Calculator
 {
-    public:
+public:
     /**
-         * @brief count - counting expression with two numbers and operation
-         * @return - result of counting
-         */
-        static double count(double firstNumber, QChar operation, double secondNumber);
+     * @brief count - counting expression with two numbers and operation
+     * @return - result of counting
+     */
+    static double count(double firstNumber, QChar operation, double secondNumber);
 };
