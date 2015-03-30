@@ -60,7 +60,7 @@ void Widget::paintEvent(QPaintEvent *)
 
 
     QTime currentTime = QTime::currentTime();
-    QTime *time;
+    QTime *time = nullptr;
     if (GMT)
         time = new QTime(currentTime.hour() - 3, currentTime.minute(), currentTime.second());
     else
