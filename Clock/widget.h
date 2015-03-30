@@ -1,8 +1,8 @@
-#ifndef WIDGET_H
-#define WIDGET_H
+#pragma once
 
 #include <QWidget>
 #include <QtGui>
+#include <QTime>
 
 namespace Ui {
 class Widget;
@@ -26,5 +26,3 @@ class Widget : public QWidget
     protected:
         void paintEvent(QPaintEvent *);
 };
-
-#endif // WIDGET_H
