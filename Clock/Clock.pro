@@ -11,10 +11,11 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = Clock
 TEMPLATE = app
 
-
 SOURCES += main.cpp\
         widget.cpp
 
 HEADERS  += widget.h
 
 FORMS    += widget.ui
+
+QMAKE_CXXFLAGS += -std=c++0x
