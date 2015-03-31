@@ -13,10 +13,6 @@ public:
     ControlPanel(QWidget *parent = 0);
     ~ControlPanel();
 
-signals:
-
-public slots:
-
 public:
     QPushButton *pushButton;
     QSlider *angleSlider;

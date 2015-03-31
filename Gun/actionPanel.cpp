@@ -1,11 +1,15 @@
 #include "actionPanel.h"
 
 ActionPanel::ActionPanel(QWidget *parent) :
-    QWidget(parent),
-    angle(45), velocity(100),
-    currentAngle(45), currentVelocity(100),
-    initialCoord(bombRadius, bombRadius), currentCoord(bombRadius, bombRadius),
-    timeFromStart(0)
+    QWidget(parent)
+    , angle(45)
+    , velocity(100)
+    , currentAngle(45)
+    , currentVelocity(100)
+    , initialCoord(bombRadius, bombRadius)
+    , target(1500, - 1000)
+    , currentCoord(bombRadius, bombRadius)
+    , timeFromStart(0)
 {
     timer = new QTimer(this);
     timer->stop();
@@ -31,7 +35,12 @@ void ActionPanel::setVelocity(int newVelocity)
 
 void ActionPanel::createTimer()
 {
-    currentCoord = Coordinates::coordLengthAngle(QPoint(0, 0), bombRadius + trunkLength, angle);
+    currentCoord = Coordinates::coordLengthAngle(
+                QPoint(0, 0)
+                , bombRadius + trunkLength
+                , angle
+                );
+
     initialCoord = currentCoord;
     currentAngle = angle;
     currentVelocity = velocity;
@@ -42,9 +51,26 @@ void ActionPanel::createTimer()
 void ActionPanel::updateCoordinates()
 {
     timeFromStart++;
-    currentCoord = Coordinates::coordTimeDependence(initialCoord, currentVelocity,
-                                                    currentAngle, timeFromStart);
-    update();
+    currentCoord = Coordinates::coordTimeDependence(
+                initialCoord
+                , currentVelocity
+                , currentAngle
+                , timeFromStart
+                );
+
+    if (Coordinates::inCircle(currentCoord, target, targetRadius))
+        showWin();
+    else
+        update();
+}
+
+void ActionPanel::showWin()
+{
+    QMessageBox *messageBox = new QMessageBox;
+    messageBox->setText("YOU WIN!");
+    messageBox->show();
+    if (!messageBox->isVisible())
+        delete messageBox;
 }
 
 void ActionPanel::paintEvent(QPaintEvent *)
@@ -64,6 +90,9 @@ void ActionPanel::paintEvent(QPaintEvent *)
     int side = qMax(width(), height());
     painter.scale(side / 2000.0, side / 2000.0);
 
+    painter.setBrush(Qt::red);
+    painter.setPen(Qt::black);
+    painter.drawEllipse(target, targetRadius, targetRadius);
     painter.setBrush(trunkColor);
     painter.setPen(Qt::black);
     painter.save();
