@@ -11,7 +11,6 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = Gun
 TEMPLATE = app
 
-
 SOURCES += main.cpp\
         widget.cpp \
     actionPanel.cpp \
@@ -22,5 +21,3 @@ HEADERS  += widget.h \
     actionPanel.h \
     controlPanel.h \
     coordinates.h
-
-FORMS    +=
