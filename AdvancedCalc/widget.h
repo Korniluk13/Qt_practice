@@ -30,8 +30,8 @@ private slots:
 private:
     Ui::Widget *ui;
 
-    QSignalMapper *figureSignalMapper;
-    QSignalMapper *operationSignalMapper;
+    QSignalMapper figureSignalMapper;
+    QSignalMapper operationSignalMapper;
 
     double firstNumber;
     double secondNumber;
