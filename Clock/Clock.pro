@@ -8,6 +8,9 @@ QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
+CONFIG += c++11
+CONFIG += console
+
 TARGET = Clock
 TEMPLATE = app
 
@@ -17,5 +20,3 @@ SOURCES += main.cpp\
 HEADERS  += widget.h
 
 FORMS    += widget.ui
-
-QMAKE_CXXFLAGS += -std=c++0x

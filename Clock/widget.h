@@ -21,7 +21,7 @@ class Widget : public QWidget
 
     private:
         Ui::Widget *ui;
-        bool GMT;
+        bool gMT;
 
     protected:
         void paintEvent(QPaintEvent *);
