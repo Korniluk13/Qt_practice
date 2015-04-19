@@ -22,10 +22,10 @@ private slots:
     void displayResult();
 
     ///changeEditLine - changing edit line after inputing new figure
-    void changeEditLine(QString newSymbol);
+    void changeEditLine(const QString &newSymbol);
 
     ///initialization firstNumber and operation
-    void rememberOperand(QString operation);
+    void rememberOperand(const QString &operation);
 
 private:
     Ui::Widget *ui;

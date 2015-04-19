@@ -64,12 +64,12 @@ void Widget::displayResult()
         return;
     }
 
-    double result = Calculator::count(firstNumber, operation, secondNumber);
+    const double result = Calculator::count(firstNumber, operation, secondNumber);
     ui->lineEdit->setText(QString::number(result));
     operationsSequense = false;
 }
 
-void Widget::changeEditLine(QString newSymbol)
+void Widget::changeEditLine(const QString &newSymbol)
 {
     QString current = ui->lineEdit->text();
 
@@ -84,7 +84,7 @@ void Widget::changeEditLine(QString newSymbol)
     ui->lineEdit->setText(current);
 }
 
-void Widget::rememberOperand(QString operation)
+void Widget::rememberOperand(const QString &operation)
 {
     if (operationsSequense)
     {
@@ -101,9 +101,7 @@ void Widget::rememberOperand(QString operation)
 
 void Widget::showError(const QString &error)
 {
-    QMessageBox *errorBox = new QMessageBox;
-    errorBox->setText(error);
-    errorBox->show();
-    if (!errorBox->isVisible())
-        delete errorBox;
+    QMessageBox errorBox;
+    errorBox.setText(error);
+    errorBox.show();
 }
