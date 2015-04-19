@@ -93,6 +93,7 @@ void ActionPanel::paintEvent(QPaintEvent *)
     painter.setBrush(Qt::red);
     painter.setPen(Qt::black);
     painter.drawEllipse(target, targetRadius, targetRadius);
+
     painter.setBrush(trunkColor);
     painter.setPen(Qt::black);
     painter.save();
