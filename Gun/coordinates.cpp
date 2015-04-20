@@ -1,7 +1,7 @@
 #include "coordinates.h"
 
 QPoint Coordinates::coordTimeDependence(
-        QPoint initialCoord
+        const QPoint &initialCoord
         , int velocity
         , int angle
         , int timeFromStart
@@ -20,7 +20,7 @@ QPoint Coordinates::coordTimeDependence(
     return QPoint(coordX, - coordY);
 }
 
-QPoint Coordinates::coordLengthAngle(QPoint initialCoord, int length, int angle)
+QPoint Coordinates::coordLengthAngle(const QPoint &initialCoord, int length, int angle)
 {
     double cosAngle = cos(angle * piAngle);
     double sinAngle = sin(angle * piAngle);
@@ -31,7 +31,11 @@ QPoint Coordinates::coordLengthAngle(QPoint initialCoord, int length, int angle)
     return QPoint(coordX, - coordY);
 }
 
-bool Coordinates::inCircle(QPoint centerOfObject, QPoint centerOfCircle, int circleRadius)
+bool Coordinates::inCircle(
+        QPoint &centerOfObject
+        , QPoint &centerOfCircle
+        , int circleRadius
+        )
 {
     bool isInHorizontalZone = centerOfCircle.rx() + circleRadius > centerOfObject.rx()
         && centerOfCircle.rx() - circleRadius < centerOfObject.rx();

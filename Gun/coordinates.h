@@ -11,7 +11,7 @@ public:
     /// using the angle of the throw, velocity of the throw,
     /// time from start throwing
     static QPoint coordTimeDependence(
-            QPoint initialCoord
+            const QPoint &initialCoord
             , int velocity
             , int angle
             , int timeFromStart
@@ -20,15 +20,15 @@ public:
     ///Count coordinates using initial coordinates, distance between current point
     /// and initial coordinates, tilt angle
     static QPoint coordLengthAngle(
-            QPoint initialCoord
+            const QPoint &initialCoord
             , int length
             , int angle
             );
 
     ///Determine is object in circle or not
     static bool inCircle(
-            QPoint centerOfObject
-            , QPoint centerOfCircle
+            QPoint &centerOfObject
+            , QPoint &centerOfCircle
             , int circleRadius
             );
 
