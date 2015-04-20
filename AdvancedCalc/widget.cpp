@@ -8,6 +8,7 @@ Widget::Widget(QWidget *parent) :
   , secondNumber(0)
   , operation('+')
   , operationsSequense(false)
+  , lastIsEqual(false)
 {
     ui->setupUi(this);
 
@@ -36,7 +37,6 @@ Widget::Widget(QWidget *parent) :
     connect(ui->buttonPoint, SIGNAL(clicked()), &figureSignalMapper, SLOT(map()));
 
     //connecting operations and buttons
-
     const int operationCount = 4;
     QPushButton *operationButtonArray[] = {
         ui->buttonPlus
@@ -74,13 +74,19 @@ void Widget::displayResult()
     const double result = Calculator::count(firstNumber, operation, secondNumber);
     ui->lineEdit->setText(QString::number(result));
     operationsSequense = false;
+    lastIsEqual = true;
 }
 
 void Widget::changeEditLine(const QString &newSymbol)
 {
-    QString current = ui->lineEdit->text();
+    QString current = "";
+    if (lastIsEqual)
+        (lastIsEqual = false);
+    else
+        current = ui->lineEdit->text();
 
-    if (newSymbol == "." && (static_cast<int>(current.toDouble()) != (current.toDouble())
+    if (newSymbol == "."
+            && static_cast<int>(current.toDouble()) != (current.toDouble()
             || current[current.length() - 1] == '.' ))
     {
         showError("Exsess point!");

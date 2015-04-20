@@ -37,6 +37,7 @@ private:
     double secondNumber;
     QChar operation;
     bool operationsSequense;
+    bool lastIsEqual;
 
     ///Show message box with text of the error
     void showError(const QString &error);
