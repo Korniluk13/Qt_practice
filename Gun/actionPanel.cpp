@@ -12,8 +12,6 @@ ActionPanel::ActionPanel(QWidget *parent) :
     , timeFromStart(0)
 {
     timer = new QTimer(this);
-    timer->stop();
-
     connect(timer, SIGNAL(timeout()), this, SLOT(updateCoordinates()));
 }
 
@@ -59,7 +57,11 @@ void ActionPanel::updateCoordinates()
                 );
 
     if (Coordinates::inCircle(currentCoord, target, targetRadius))
+    {
+        timer->stop();
         showWin();
+        currentCoord = QPoint(0, 0);
+    }
     else
         update();
 }

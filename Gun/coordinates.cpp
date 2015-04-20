@@ -37,7 +37,7 @@ bool Coordinates::inCircle(QPoint centerOfObject, QPoint centerOfCircle, int cir
         && centerOfCircle.rx() - circleRadius < centerOfObject.rx();
 
     bool isInVerticalZone = centerOfCircle.ry() + circleRadius > centerOfObject.ry()
-        && centerOfCircle.ry() + circleRadius > centerOfObject.ry();
+        && centerOfCircle.ry() - circleRadius < centerOfObject.ry();
 
     return isInHorizontalZone && isInVerticalZone;
 }
