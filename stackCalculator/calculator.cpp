@@ -1,35 +1,39 @@
 #include "calculator.h"
 
-Calculator::Calculator(){}
+Calculator::Calculator() {}
 
-double Calculator::calculate(ifstream &input)
+double Calculator::calculate(const QString &expression)
 {
     Stack<double> *calcStack = new LinkedStack<double>;
     //Stack<double> *calcStack = new ArrayStack<double>(100);
 
-    char operation = ' ';
-    double number = 0;
-    char oracleChar = input.peek();
-    char symbol = ' ';
-    while (symbol != '\n')
+    int currentPosition = 0;
+    int length = expression.length();
+    while (currentPosition < length)
     {
-        if (isDigit(oracleChar))
+        if (isOperation(expression[currentPosition].toLatin1()))
         {
-            input >> number;
-            calcStack->push(number);
-        }
-        else if (isOperation(oracleChar))
-        {
-            input >> operation;
+            char operation = expression[currentPosition].toLatin1();
             double current = calcStack->pop();
             double previous = calcStack->pop();
             double result = count(previous, current, operation);
             calcStack->push(result);
         }
-        else
-            input.get(symbol);
 
-        oracleChar = input.peek();
+        else if (isDigit(expression[currentPosition].toLatin1()))
+        {
+            QString numberInStr = "";
+            while (currentPosition < length && isDigit(expression[currentPosition].toLatin1()))
+            {
+                numberInStr += expression[currentPosition].toLatin1();
+                currentPosition++;
+            }
+
+            int number = numberInStr.toInt();
+            calcStack->push(number);
+        }
+
+        currentPosition++;
     }
 
     double result = calcStack->pop();
@@ -46,11 +50,11 @@ double Calculator::count(double previous, double current, char operation)
 {
     if (operation == '+')
         return previous + current;
-    if (operation == '-')
+    else if (operation == '-')
         return previous - current;
-    if (operation == '*')
+    else if (operation == '*')
         return previous * current;
-    if (operation == '/')
+    else
         return previous / current;
 }
 
@@ -58,7 +62,3 @@ bool Calculator::isDigit(char symbol)
 {
     return (symbol - '0' >= 0 && symbol - '0' <= 9);
 }
-
-
-
-

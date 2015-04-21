@@ -1,6 +1,5 @@
 #pragma once
-#include <fstream>
-using namespace std;
+#include <QString>
 #include "linkedStack.h"
 #include "arrayStack.h"
 #include "stack.h"
@@ -9,7 +8,7 @@ class Calculator
 {
     public:
         Calculator();
-        double calculate(ifstream& input);
+        double calculate(const QString &expression);
 
     private:
         bool isOperation(char symbol);

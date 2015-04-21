@@ -38,6 +38,8 @@ template <typename T> class LinkedStack: public Stack<T>
                 delete current;
                 return taken;
             }
+
+            return 0;
         }
 
         void print()

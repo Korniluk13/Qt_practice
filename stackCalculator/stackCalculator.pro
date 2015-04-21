@@ -11,6 +11,7 @@ HEADERS += \
     arrayStack.h \
     linkedStack.h \
     calculator.h \
-    stackTest.h
+    stackTest.h \
+    calculatorTest.h
 
 QMAKE_CXXFLAGS += -std=c++0x
