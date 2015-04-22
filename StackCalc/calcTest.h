@@ -16,31 +16,28 @@ private slots:
     void init()
     {
         arrayStack = new ArrayStack;
-        calc = new StackCalc(arrayStack);
     }
 
     void cleanup()
     {
-        delete calc;
-        //delete arrayStack;
+        delete arrayStack;
     }
 
     void testEasyExpression()
     {
-        QCOMPARE(calc->calculate("1 1 +"), 2.0);
+        QCOMPARE(StackCalc::calculate("1 1 +", arrayStack), 2.0);
     }
 
     void testComplexExpression1()
     {
-        QCOMPARE(calc->calculate("2 1 4 + *"), 10.0);
+        QCOMPARE(StackCalc::calculate("2 1 4 + *", arrayStack), 10.0);
     }
 
     void testComplexExpression2()
     {
-        QCOMPARE(calc->calculate("26 13 5 4 - * /"), 2.0);
+        QCOMPARE(StackCalc::calculate("26 13 5 4 - * /", arrayStack), 2.0);
     }
 
 private:
     Stack *arrayStack;
-    StackCalc *calc;
 };

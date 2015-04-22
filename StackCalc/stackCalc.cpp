@@ -1,8 +1,5 @@
 #include "stackCalc.h"
 
-StackCalc::StackCalc(Stack *stack) : calcStack(stack)
-{}
-
 bool isOperation(char symbol)
 {
     return (symbol == '+' || symbol == '-' || symbol == '*' || symbol == '/');
@@ -25,7 +22,7 @@ bool isDigit(char symbol)
     return (symbol >= '0' && symbol <= '9');
 }
 
-double StackCalc::calculate(const QString &expression)
+double StackCalc::calculate(const QString &expression, Stack *calcStack)
 {
     int currentPosition = 0;
     const int length = expression.length();
@@ -56,7 +53,5 @@ double StackCalc::calculate(const QString &expression)
         currentPosition++;
     }
 
-    const double result = calcStack->pop();
-    delete calcStack;
-    return result;
+    return calcStack->pop();
 }

@@ -7,12 +7,6 @@
 class StackCalc
 {
 public:
-    ///Constructor with define stack for stack calculator
-    StackCalc(Stack *stack);
-
-    ///Calculating postfix expression from string
-    double calculate(const QString &expression);
-
-private:
-    Stack *calcStack;
+    ///Calculating postfix expression from string using define stack
+    static double calculate(const QString &expression, Stack *calcStack);
 };
