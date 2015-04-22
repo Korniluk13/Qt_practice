@@ -6,11 +6,13 @@ CONFIG += c++11
 
 SOURCES += main.cpp \
     linkedStack.cpp \
-    arrayStack.cpp
+    arrayStack.cpp \
+    stackCalc.cpp
 
 HEADERS += \
     stack.h \
     linkedStack.h \
     arrayStack.h \
-    stackTest.h
+    stackTest.h \
+    stackCalc.h
 
