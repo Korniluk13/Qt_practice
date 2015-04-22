@@ -35,7 +35,7 @@ int LinkedStack::pop()
     }
 }
 
-int LinkedStack::size()
+int LinkedStack::size() const
 {
     return currentSize;
 }

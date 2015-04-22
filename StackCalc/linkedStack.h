@@ -10,7 +10,7 @@ public:
     ~LinkedStack() override;
     void push(int value);
     int pop();
-    int size();
+    int size() const;
 
 private:
     struct StackElement

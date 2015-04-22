@@ -11,7 +11,7 @@ public:
     ~ArrayStack() override;
     void push(int value);
     int pop();
-    int size();
+    int size() const;
 
 private:
     vector<int> stackArray;

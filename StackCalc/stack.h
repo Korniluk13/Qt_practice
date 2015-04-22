@@ -11,7 +11,7 @@ public:
     virtual int pop() = 0;
 
     ///Counting size of the stack
-    virtual int size() = 0;
+    virtual int size() const = 0;
 
     ///Destructor for the stack
     virtual ~Stack() {}

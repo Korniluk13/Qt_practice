@@ -20,7 +20,7 @@ int ArrayStack::pop()
     }
 }
 
-int ArrayStack::size()
+int ArrayStack::size() const
 {
     return stackArray.size();
 }

@@ -15,8 +15,8 @@ private slots:
 
     void init()
     {
-        linkedStack = new LinkedStack();
-        arrayStack = new ArrayStack();
+        linkedStack = new LinkedStack;
+        arrayStack = new ArrayStack;
     }
 
     void cleanup()
