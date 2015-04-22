@@ -1,9 +1,31 @@
 #include "stackCalc.h"
 
-StackCalc::Calculator(Stack *stack) : calcStack(stack)
+StackCalc::StackCalc(Stack *stack) : calcStack(stack)
 {}
 
-double StackCalc::calculate(const QString &str)
+bool isOperation(char symbol)
+{
+    return (symbol == '+' || symbol == '-' || symbol == '*' || symbol == '/');
+}
+
+double count(double previous, double current, char operation)
+{
+    if (operation == '+')
+        return previous + current;
+    else if (operation == '-')
+        return previous - current;
+    else if (operation == '*')
+        return previous * current;
+    else
+        return previous / current;
+}
+
+bool isDigit(char symbol)
+{
+    return (symbol >= '0' && symbol <= '9');
+}
+
+double StackCalc::calculate(const QString &expression)
 {
     int currentPosition = 0;
     const int length = expression.length();
@@ -27,7 +49,7 @@ double StackCalc::calculate(const QString &str)
                 currentPosition++;
             }
 
-            int number = numberInStr.toInt();
+            const int number = numberInStr.toInt();
             calcStack->push(number);
         }
 
@@ -37,26 +59,4 @@ double StackCalc::calculate(const QString &str)
     const double result = calcStack->pop();
     delete calcStack;
     return result;
-}
-
-bool Calculator::isOperation(char symbol)
-{
-    return (symbol == '+' || symbol == '-' || symbol == '*' || symbol == '/');
-}
-
-double Calculator::count(double previous, double current, char operation)
-{
-    if (operation == '+')
-        return previous + current;
-    else if (operation == '-')
-        return previous - current;
-    else if (operation == '*')
-        return previous * current;
-    else
-        return previous / current;
-}
-
-bool Calculator::isDigit(char symbol)
-{
-    return (symbol >= '0' && symbol <= '9');
 }

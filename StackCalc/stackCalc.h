@@ -8,10 +8,10 @@ class StackCalc
 {
 public:
     ///Constructor with define stack for stack calculator
-    Calculator(Stack *stack);
+    StackCalc(Stack *stack);
 
     ///Calculating postfix expression from string
-    double calculate(const QString &str);
+    double calculate(const QString &expression);
 
 private:
     Stack *calcStack;

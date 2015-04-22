@@ -14,5 +14,6 @@ HEADERS += \
     linkedStack.h \
     arrayStack.h \
     stackTest.h \
-    stackCalc.h
+    stackCalc.h \
+    calcTest.h
 
