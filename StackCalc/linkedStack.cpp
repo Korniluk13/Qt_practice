@@ -1,5 +1,7 @@
 #include "linkedStack.h"
 
+using namespace std;
+
 LinkedStack::LinkedStack(): top(nullptr)
 {}
 

@@ -1,7 +1,6 @@
 #pragma once
 
 #include <vector>
-using namespace std;
 
 #include "stack.h"
 
@@ -14,5 +13,5 @@ public:
     int size() const;
 
 private:
-    vector<int> stackArray;
+    std::vector<int> stackArray;
 };
