@@ -71,6 +71,18 @@ private slots:
         QCOMPARE(arrayStack->pop(), 14);
     }
 
+    void testEmptyStackException()
+    {
+        try
+        {
+            linkedStack->pop();
+        }
+        catch(StackException &exc)
+        {
+            QVERIFY(exc.errowString() == "Empty stack");
+        }
+    }
+
 private:
     Stack *linkedStack;
     Stack *arrayStack;

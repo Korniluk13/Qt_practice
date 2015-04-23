@@ -35,6 +35,8 @@ int LinkedStack::pop()
         delete current;
         return taken;
     }
+    else
+        throw StackException("Empty stack");
 }
 
 int LinkedStack::size() const

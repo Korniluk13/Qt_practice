@@ -18,6 +18,8 @@ int ArrayStack::pop()
         stackArray.pop_back();
         return back;
     }
+    else
+        throw StackException("Empty stack");
 }
 
 int ArrayStack::size() const

@@ -7,7 +7,8 @@ CONFIG += c++11
 SOURCES += main.cpp \
     linkedStack.cpp \
     arrayStack.cpp \
-    stackCalc.cpp
+    stackCalc.cpp \
+    stackException.cpp
 
 HEADERS += \
     stack.h \
@@ -15,5 +16,6 @@ HEADERS += \
     arrayStack.h \
     stackTest.h \
     stackCalc.h \
-    calcTest.h
+    calcTest.h \
+    stackException.h
 

@@ -1,5 +1,7 @@
 #pragma once
 
+#include "stackException.h"
+
 ///Abstract class that provides stack
 class Stack
 {
