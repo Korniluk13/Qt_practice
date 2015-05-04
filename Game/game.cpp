@@ -1,6 +1,6 @@
-#include "widget.h"
+#include "game.h"
 
-Widget::Widget(QWidget *parent) :
+Game::Game(QWidget *parent) :
     QWidget(parent)
   , mGameField(new GameField)
   , mControlPanel(new ControlPanel)
@@ -13,14 +13,16 @@ Widget::Widget(QWidget *parent) :
     window->addWidget(mControlPanel, 1);
     setLayout(window);
 
-    connect(mControlPanel->mStartButton, SIGNAL(clicked())
-            , mGameField, SLOT(buildField()));
+    connect(mControlPanel->mStartButton, &QPushButton::clicked
+            , mGameField, &GameField::buildField);
 
+    ///valueChanged - overloaded function therefore
+    /// you can not use new signal and slot style
     connect(mControlPanel->mSizeBox, SIGNAL(valueChanged(int))
             , mGameField, SLOT(changeSize(int)));
 }
 
-Widget::~Widget()
+Game::~Game()
 {
     delete mGameField;
     delete mControlPanel;

@@ -10,7 +10,7 @@ class GameField : public QFrame
     Q_OBJECT
 public:
     explicit GameField(QWidget *parent = 0);
-    ~GameField();
+    ~GameField() override;
 
 public slots:
 
@@ -26,9 +26,11 @@ public slots:
 
 private:
     ///Deleting all objects from the layout
-    clearLayout();
+    void clearLayout(QLayout *layout);
 
     int mFieldSize;
     bool mNextStepX;
+
+    //Has ownership
     QGridLayout *buttonLayout;
 };

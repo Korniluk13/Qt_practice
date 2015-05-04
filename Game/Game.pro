@@ -13,10 +13,11 @@ TEMPLATE = app
 CONFIG += c++11
 
 SOURCES += main.cpp\
-        widget.cpp \
     gameField.cpp \
-    controlPanel.cpp
+    controlPanel.cpp \
+    game.cpp
 
-HEADERS  += widget.h \
+HEADERS  += \
     gameField.h \
-    controlPanel.h
+    controlPanel.h \
+    game.h

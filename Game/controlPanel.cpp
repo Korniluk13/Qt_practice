@@ -21,3 +21,9 @@ ControlPanel::ControlPanel(QWidget *parent) :
     panelLayout->addWidget(mStartButton);
     setLayout(panelLayout);
 }
+
+ControlPanel::~ControlPanel()
+{
+    delete mSizeBox;
+    delete mStartButton;
+}
